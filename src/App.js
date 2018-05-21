@@ -1,18 +1,20 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Card from 'grommet/components/Card';
+import Anchor from 'grommet/components/Anchor'
+
+
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <Card label='Sample Label'
+            heading='Sample Heading'
+            description='Sample description providing more details.'
+            video={{"source": "/video/test.mp4", "type": "mp4"}}
+            link={<Anchor href=''
+            label='Sample anchor' />}
+            textSize='medium' />
       </div>
     );
   }
