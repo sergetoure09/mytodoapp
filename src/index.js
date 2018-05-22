@@ -1,9 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-//import '../node_modules/grommet/scss/vanilla/index';
-import App from './App';
+//import './index.css';
+import '../node_modules/grommet-css'
+import './style.scss';
+//import 'grommet/scss/vanilla/index.scss';
+import Root from './Root';
 import registerServiceWorker from './registerServiceWorker';
+import * as firebase from 'firebase'
 
-ReactDOM.render(<App />, document.getElementById('root'));
+var config={
+    apiKey: "AIzaSyC1Oz0PdzEXW0lpI-sj0Dm49thH6aObW24",
+    authDomain: "mytodoappgrommet.firebaseapp.com",
+    databaseURL: "https://mytodoappgrommet.firebaseio.com",
+    projectId: "mytodoappgrommet",
+    storageBucket: "mytodoappgrommet.appspot.com",
+    messagingSenderId: "530810064014"
+  };
+
+
+
+firebase.initializeApp(config)
+
+ReactDOM.render(<Root />, document.getElementById('root'));
 registerServiceWorker();
