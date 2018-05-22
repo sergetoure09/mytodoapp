@@ -9,7 +9,7 @@ import registerServiceWorker from './registerServiceWorker';
 import * as firebase from 'firebase'
 
 var config={
-    apiKey: "AIzaSyC1Oz0PdzEXW0lpI-sj0Dm49thH6aObW24",
+    apiKey: "AIzaSC1Oz0PdzEXW0I-sj0Dm49thH6abW24",
     authDomain: "mytodoappgrommet.firebaseapp.com",
     databaseURL: "https://mytodoappgrommet.firebaseio.com",
     projectId: "mytodoappgrommet",
