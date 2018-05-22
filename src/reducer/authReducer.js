@@ -18,7 +18,16 @@ export const authReducer=(state=initialState,action)=>{
         return {
             ...state,
             uid:action.payload.uid,
-            token:action.payload.token
+            token:action.payload.token,
+            loading:false
+        }
+
+        case actionTypes.AUTH_LOGOUT:
+        return {
+            ...state,
+            token:null,
+            uid:null,
+            loading:false
         }
 
         default:

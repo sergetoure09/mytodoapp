@@ -70,6 +70,7 @@ body{
 }
 
 .main{
+    position: relative;
     padding: 2rem;
     height: 75vh;
     background-color: var(--color-primary-light);
@@ -79,6 +80,13 @@ body{
 .loginform{
     margin: 0 auto;
     width: 40%;
+}
+.spinner{
+   position: absolute;
+   top: 40%;
+   left: 50%;
+   transform: translate(-50%,-50%);
+   
 }
 
 //components
@@ -116,6 +124,7 @@ body{
     }
     &__logout{
         @extend %authlinks;
+        cursor: pointer;
         
     }
     &__register{

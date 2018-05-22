@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 
 //import Toast from 'grommet/components/Toast';
 import LoginForm from 'grommet/components/LoginForm';
-import Anchor from 'grommet/components/Anchor'
+//import Anchor from 'grommet/components/Anchor'
 //import Section from 'grommet/components/Section'
 
 import * as Icon from 'react-icons/lib/io'
@@ -16,6 +16,7 @@ import {AppFooter}  from './component/AppFooter'
 import {connect} from 'react-redux'
 import * as actionCreators from '../src/action/actionCreators'
 import Spinning from 'grommet/components/icons/Spinning';
+
 
 
 
@@ -32,12 +33,22 @@ class App extends Component {
     
   }
 
+  handleLogout=()=>{
+    this.props.handleLogout()
+  }
+
+
+  componentDidMount(){
+   
+   this.props.initApp()
+  }
+
 
 
   render() {
 
     let authComponentDisplay= this.props.auth ? ( <div className="auth-nav">
-    <div className="auth-nav__logout"><span>logout</span></div>
+    <div className="auth-nav__logout" onClick={this.handleLogout}><span>logout</span></div>
     <Avatar username="Serge Toure" picture="./img/serguey.jpg" />
     </div>):(<div className="auth-nav">
                           <div className="auth-nav__login"><span>login</span></div>
@@ -45,13 +56,12 @@ class App extends Component {
                           
                           </div>)
     let navDisplay= this.props.auth ? ( <nav className="main-nav">
-    <a href="#" className="main-nav__item">TODO manager</a>
-    <a href="#" className="main-nav__item"><Icon.IoArrowGraphUpLeft />TODO report</a>
+    <a href="/" className="main-nav__item">TODO manager</a>
+    <a href="/" className="main-nav__item"><Icon.IoArrowGraphUpLeft />TODO report</a>
     </nav>): null 
 
-    let mainContent= this.props.loading ? <Spinning size="xlarge" /> : (<div className="loginform">
-    <LoginForm onSubmit={({username,password})=>{alert(username+' '+password) 
-                                              this.handleAuthentication(username,password)}}
+    let mainContent= this.props.loading ? <div className='spinner'><Spinning size="xlarge" /></div> : (<div className="loginform">
+    <LoginForm onSubmit={({username,password})=>{this.handleAuthentication(username,password)}}
             title='Login'
             // forgotPassword={<Anchor href='#'
             // label='Forgot password?' />}
@@ -100,7 +110,9 @@ const mapStateToProps=state=>{
 
 const mapdispatchToProps=dispatch=>{
   return{
-    authenticateUser:(email,password)=>dispatch(actionCreators.authenticateUser(email,password))
+    authenticateUser:(email,password)=>dispatch(actionCreators.authenticateUser(email,password)),
+    handleLogout:()=>dispatch(actionCreators.logoutUser()),
+    initApp:()=>dispatch(actionCreators.initApp())
   }
 }
 
